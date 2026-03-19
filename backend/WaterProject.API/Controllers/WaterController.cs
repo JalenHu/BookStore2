@@ -15,7 +15,9 @@ namespace WaterProject.API.Controllers
         [HttpGet("AllProjects")]
         public IEnumerable<Project> GetProjects()
         {
-            return _waterContext.Projects.ToList();
+            return _waterContext.Projects
+            .Take(5)
+            .ToList();
         }
         
         [HttpGet("FunctionalProjects")]
