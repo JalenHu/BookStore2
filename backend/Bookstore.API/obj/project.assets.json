@@ -577,11 +577,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jalen/Documents/Education/Winter2026/IS413/WaterProject/backend/WaterProject.API/WaterProject.API.csproj",
-      "projectName": "WaterProject.API",
-      "projectPath": "/Users/jalen/Documents/Education/Winter2026/IS413/WaterProject/backend/WaterProject.API/WaterProject.API.csproj",
+      "projectUniqueName": "/Users/jalen/Documents/Education/Winter2026/IS413/BookStore/backend/Bookstore.API/Bookstore.API.csproj",
+      "projectName": "Bookstore.API",
+      "projectPath": "/Users/jalen/Documents/Education/Winter2026/IS413/BookStore/backend/Bookstore.API/Bookstore.API.csproj",
       "packagesPath": "/Users/jalen/.nuget/packages/",
-      "outputPath": "/Users/jalen/Documents/Education/Winter2026/IS413/WaterProject/backend/WaterProject.API/obj/",
+      "outputPath": "/Users/jalen/Documents/Education/Winter2026/IS413/BookStore/backend/Bookstore.API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/jalen/.nuget/NuGet/NuGet.Config"

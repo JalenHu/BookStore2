@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uV7wOaEmVdU=",
+  "dgSpecHash": "rwhBv9sQEZo=",
   "success": true,
-  "projectFilePath": "/Users/jalen/Documents/Education/Winter2026/IS413/WaterProject/backend/WaterProject.API/WaterProject.API.csproj",
+  "projectFilePath": "/Users/jalen/Documents/Education/Winter2026/IS413/BookStore/backend/Bookstore.API/Bookstore.API.csproj",
   "expectedPackageFiles": [
     "/Users/jalen/.nuget/packages/microsoft.aspnetcore.openapi/10.0.1/microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
     "/Users/jalen/.nuget/packages/microsoft.data.sqlite.core/10.0.5/microsoft.data.sqlite.core.10.0.5.nupkg.sha512",

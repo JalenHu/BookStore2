@@ -6,25 +6,37 @@ namespace WaterProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Bookstore : ControllerBase
+    public class BookstoreController : ControllerBase
     {
         private BookDbContext _bookContext;
         
-        public Bookstore(BookDbContext temp) =>_bookContext = temp;
-        
-        [HttpGet("AllProjects")]
-        public IActionResult GetProjects(int pageSize = 10, int pageNum =1)
-        {
-            var something = _bookContext.Books
-            .Skip((pageNum - 1) * pageSize)        
-            .Take(pageSize)
-            .ToList();
+        public BookstoreController(BookDbContext temp) =>_bookContext = temp;
 
-            var totalNumberProjects = _bookContext.Books.Count();
+        [HttpGet("AllBooks")]
+        public IActionResult GetBooks(int pageSize = 10, int pageNum = 1, string sortOrder = "asc")
+        {
+            var query = _bookContext.Books.AsQueryable();
+
+            // ONE if statement to decide sort direction
+            if (sortOrder == "desc")
+            {
+                query = query.OrderByDescending(b => b.Title);
+            }
+            else
+            {
+                query = query.OrderBy(b => b.Title);
+            }
+
+            var something = query
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var totalNumberBooks = _bookContext.Books.Count();
             var someObjects = new
             {
-                Projects = something,
-                TotalNumProject = totalNumberProjects
+                Books = something,
+                TotalNumBooks = totalNumberBooks
             };
             return Ok(someObjects);
         }

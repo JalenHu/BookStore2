@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace WaterProject.API.Data;
 
-public class BookstoreList
+public class BookDbContext : DbContext
 {
-    public List<Book> Book { get; set; }
-    public int TotalNumProjects { get; set; }
+    public BookDbContext(DbContextOptions<BookDbContext> options) : base(options)
+    {}
+    
+    public DbSet<Book> Books { get; set; }
 }
