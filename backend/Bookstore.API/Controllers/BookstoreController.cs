@@ -13,11 +13,15 @@ namespace WaterProject.API.Controllers
         public BookstoreController(BookDbContext temp) =>_bookContext = temp;
 
         [HttpGet("AllBooks")]
-        public IActionResult GetBooks(int pageSize = 10, int pageNum = 1, string sortOrder = "asc")
+        public IActionResult GetBooks(int pageSize = 10, int pageNum = 1, string sortOrder = "asc", string? category = null)
         {
             var query = _bookContext.Books.AsQueryable();
 
-            // ONE if statement to decide sort direction
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(b => b.Category == category);
+            }
+
             if (sortOrder == "desc")
             {
                 query = query.OrderByDescending(b => b.Title);
@@ -32,13 +36,24 @@ namespace WaterProject.API.Controllers
                 .Take(pageSize)
                 .ToList();
 
-            var totalNumberBooks = _bookContext.Books.Count();
+            var totalNumberBooks = query.Count();
             var someObjects = new
             {
                 Books = something,
                 TotalNumBooks = totalNumberBooks
             };
             return Ok(someObjects);
+        }
+
+        [HttpGet("GetCategories")]
+        public IActionResult GetCategories()
+        {
+            var categories = _bookContext.Books
+                .Select(b => b.Category)
+                .Distinct()
+                .OrderBy(c => c)
+                .ToList();
+            return Ok(categories);
         }
     }
 }
