@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/d1b73629-77c2-4b6b-b565-36e53eb399f7/resourceGroups/appsvc_windows_westus2/providers/Microsoft.Web/sites/BookStore-Jalen-Backend",
+    "appService.deploySubpath": "backend/Bookstore.API/publish"
+}
