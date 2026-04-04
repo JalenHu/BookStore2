@@ -22,7 +22,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(x => x
-    .WithOrigins("http://localhost:3000")
+    .WithOrigins(
+        "http://localhost:3000",
+        "https://green-meadow-0ece0be1e6.azurestaticapps.net"
+    )
     .AllowAnyMethod()
     .AllowAnyHeader());
 
