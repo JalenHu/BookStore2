@@ -1,10 +1,8 @@
-import { useCart } from './context/CartContext';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
-interface CartProps {
-    onContinueShopping: () => void;
-}
-
-function Cart({ onContinueShopping }: CartProps) {
+function Cart() {
+    const navigate = useNavigate();
     const { cart, removeFromCart, clearCart } = useCart();
     const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -17,7 +15,7 @@ function Cart({ onContinueShopping }: CartProps) {
                     <h1 className="mb-0">Your Cart</h1>
                 </div>
                 <div className="col-auto">
-                    <button className="btn btn-outline-secondary" onClick={onContinueShopping}>
+                    <button className="btn btn-outline-secondary" onClick={() => navigate('/')}>
                         ← Continue Shopping
                     </button>
                 </div>
@@ -62,7 +60,9 @@ function Cart({ onContinueShopping }: CartProps) {
                             <div className="row justify-content-end">
                                 <div className="col-auto">
                                     <p className="fs-5"><strong>Total: ${total.toFixed(2)}</strong></p>
-                                    <button className="btn btn-outline-danger" onClick={clearCart}>Clear Cart</button>
+                                    <button className="btn btn-outline-danger" onClick={clearCart}>
+                                        Clear Cart
+                                    </button>
                                 </div>
                             </div>
                         </>

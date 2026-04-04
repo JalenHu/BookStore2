@@ -1,20 +1,21 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import BookList from './BookList';
-import Cart from './Cart';
+import BookList from './pages/BookList';
+import Cart from './pages/Cart';
+import AdminBooks from './pages/AdminBooks';
 import { CartProvider } from './context/CartContext';
 
 function App() {
-    const [view, setView] = useState<'books' | 'cart'>('books');
-
     return (
-        <CartProvider>
-            {view === 'books' ? (
-                <BookList onViewCart={() => setView('cart')} />
-            ) : (
-                <Cart onContinueShopping={() => setView('books')} />
-            )}
-        </CartProvider>
+        <BrowserRouter>
+            <CartProvider>
+                <Routes>
+                    <Route path="/" element={<BookList />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/adminbooks" element={<AdminBooks />} />
+                </Routes>
+            </CartProvider>
+        </BrowserRouter>
     );
 }
 
